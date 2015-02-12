@@ -1,0 +1,26 @@
+# SwingSane
+SwingSane - A cross-platform, Scanner Access Now Easy (SANE) frontend.
+
+Visit [swingsane.com](http://swingsane.com/) to watch some tutorial videos and read more on how to use SwingSane.
+
+SwingSane is a cross platform, open source Java client (frontend) for [Scanner Access Now Easy (SANE)](http://www.sane-project.org/) servers (backends). SwingSane provides access to scanners connected to SANE servers on a network on any platform that supports Java and Swing. It can also be used with your own application to provide some Swing code for accessing SANE scanners.
+
+SwingSane was originally developed as a library for [FormReturn OMR Software](https://www.formreturn.com), to provide Linux users with built-in access to scanners. You can see an example of the implemented library if you download the trial and click the scan forms button.
+
+SwingSane was also intended to be an example of one way to use [JFreeSane](https://github.com/sjamesr/jfreesane), the core library used by SwingSane.
+
+SwingSane is licensed under Apache 2. Please feel free to fork the project if you want to improve (or rewrite) it.
+
+## Install
+Simply make sure Java is installed, then unzip the bin distribution and run the following:
+
+* `java -jar swingsane(version).jar`
+
+If you are using Linux, SwingSane will automatically create a Gnome desktop launcher file for your convenience. 
+
+## Compile
+To create a bin distribution, install Maven 2 and run:
+
+* `mvn clean package`
+
+A bin package will be created in the target directory, called swingsane(version)-bin.zip.
