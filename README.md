@@ -13,7 +13,7 @@ SwingSane was originally developed as a library for [FormReturn OMR Software](ht
 
 SwingSane was also intended to be an example of one way to use [JFreeSane](https://github.com/sjamesr/jfreesane), the core library used by SwingSane.
 
-SwingSane is licensed under Apache 2. If you have the ability, please [help contribute](./wiki/Contributing) to the project by adding your patches, [submitting your scanner.xml](./wiki/scanner.xml) or just forking the project and making something better.
+SwingSane is licensed under Apache 2. If you have the ability, please [help contribute](../../wiki/Contributing) to the project by adding your patches, [submitting your scanner.xml](../../wiki/scanner.xml) or just forking the project and making something better.
 
 ## Compile
 To create a bin distribution, install Maven 2 and run:
@@ -33,4 +33,4 @@ If you are using Linux, SwingSane will automatically create a Gnome desktop laun
 Video tutorials can be found on the [SwingSane youtube channel](https://www.youtube.com/channel/UC-WXALbc1ZnhpsUlvOgSqdg).
 
 ## SwingSane Wiki
-The [SwingSane Wiki](./wiki/Home) contains further information about the project and contributing to it.
+The [SwingSane Wiki](../../wiki/Home) contains further information about the project and contributing to it.
