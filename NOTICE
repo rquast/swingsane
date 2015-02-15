@@ -1,0 +1,39 @@
+Copyright 2014-2015 Roland Quast and Contributors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+
+This project includes:
+  Apache FontBox under The Apache Software License, Version 2.0
+  Apache JempBox under The Apache Software License, Version 2.0
+  Apache Log4j under The Apache Software License, Version 2.0
+  Apache PDFBox under The Apache Software License, Version 2.0
+  Commons Logging under The Apache Software License, Version 2.0
+  Guava: Google Core Libraries for Java under The Apache Software License, Version 2.0
+  Hamcrest Core under BSD style
+  imgscalr - A Java Image Scaling Library under ASF 2.0
+  jfreesane under The Apache Software License, Version 2.0
+  JmDNS under Apache License, Version 2.0
+  JUnit under Common Public License Version 1.0
+  MXP1: Xml Pull Parser 3rd Edition (XPP3) under Indiana University Extreme! Lab Software License, vesion 1.1.1 or Public Domain
+  Silk Icons under Creative Commons Attribution 2.5 License
+  SwingSane under Apache 2
+  XML Pull Parsing API under Public Domain
+  XStream Core under BSD style
+
+RandomGUID - http://www.javaexchange.com/aboutRandomGUID.html
+Artwork derived from the SANE Logo - http://www.skamphausen.de/cgi-bin/ska/SANE_Logo
+Silk Icons - http://www.famfamfam.com/lab/icons/silk/
+JTableButtonMouseListener, courtesy of Daniel F. Savarese - http://www.devx.com/getHelpOn/10MinuteSolution/20425
+Bare Bones Browser Launch (Public Domain License) - http://www.centerkey.com/java/browser/
