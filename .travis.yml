@@ -1,0 +1,7 @@
+language: java
+
+script: mvn clean package
+
+notifications:
+  email:
+    - roland@formreturn.com
