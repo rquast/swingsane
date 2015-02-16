@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import com.swingsane.business.image.ImageDeskew;
 import com.swingsane.gui.panel.DeskewTransformSettingsPanel;
 import com.swingsane.gui.panel.ITransformSettingsPanel;
+import com.swingsane.preferences.IPreferredDefaults;
 
 /**
  * @author Roland Quast (roland@formreturn.com)
@@ -19,9 +20,7 @@ import com.swingsane.gui.panel.ITransformSettingsPanel;
  */
 public class DeskewTransform implements IImageTransform {
 
-  private static final double DEFAULT_DESKEW_THRESHOLD = 2.0d;
-
-  private double deskewThreshold = DEFAULT_DESKEW_THRESHOLD;
+  private double deskewThreshold;
 
   private File sourceImageFile;
   private File outputImageFile;
@@ -29,7 +28,8 @@ public class DeskewTransform implements IImageTransform {
   private static final ImageTransformType imageTransformType = ImageTransformType.DESKEW;
 
   @Override
-  public void configure() {
+  public void configure(IPreferredDefaults preferredDefaultsImpl) {
+    deskewThreshold = preferredDefaultsImpl.getDefaultDeskewThreshold();
   }
 
   public final double getDeskewThreshold() {

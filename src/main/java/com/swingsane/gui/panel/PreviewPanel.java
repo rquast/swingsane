@@ -78,6 +78,7 @@ import com.swingsane.business.scanning.ScanEvent;
 import com.swingsane.gui.component.ImageLabel;
 import com.swingsane.gui.dialog.ImageTransformDialog;
 import com.swingsane.i18n.Localizer;
+import com.swingsane.preferences.IPreferredDefaults;
 import com.swingsane.preferences.ISwingSanePreferences;
 import com.swingsane.util.FilenameExtensionFilter;
 import com.swingsane.util.Misc;
@@ -163,6 +164,8 @@ MouseWheelListener {
 
   private JLabel cropLabel;
 
+  private IPreferredDefaults preferredDefaults;
+
   public PreviewPanel() {
     initComponents();
   }
@@ -186,7 +189,7 @@ MouseWheelListener {
         cropTransform.setSourceImageFile(tempFileList.getSelectedValue().tempFile);
         cropTransform.setOutputImageFile(tempFileList.getSelectedValue().tempFile);
         try {
-          cropTransform.configure();
+          cropTransform.configure(preferredDefaults);
           cropTransform.transform();
           tempFileListSelectionChanged(null);
         } catch (Exception ex) {
@@ -1124,6 +1127,10 @@ MouseWheelListener {
     this.preferences = preferences;
   }
 
+  public void setPreferredDefaults(IPreferredDefaults preferredDefaultsImpl) {
+    preferredDefaults = preferredDefaultsImpl;
+  }
+
   private void setSourceImage(BufferedImage sourceImage) {
     if (sourceImage != null) {
       sourceImage.flush();
@@ -1199,7 +1206,7 @@ MouseWheelListener {
           transform.setSourceImageFile(tempFileListItem.tempFile);
           transform.setOutputImageFile(tempFileListItem.tempFile);
           try {
-            transform.configure();
+            transform.configure(preferredDefaults);
           } catch (Exception ex) {
             LOG.error(ex, ex);
             showTransformErrorMessage(ex);

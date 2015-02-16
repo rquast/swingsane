@@ -3,6 +3,7 @@ package com.swingsane.business.image.transform;
 import java.io.File;
 
 import com.swingsane.gui.panel.ITransformSettingsPanel;
+import com.swingsane.preferences.IPreferredDefaults;
 
 /**
  * @author Roland Quast (roland@formreturn.com)
@@ -10,7 +11,7 @@ import com.swingsane.gui.panel.ITransformSettingsPanel;
  */
 public interface IImageTransform {
 
-  void configure() throws Exception;
+  void configure(IPreferredDefaults preferredDefaultsImpl) throws Exception;
 
   File getOutputImageFile();
 

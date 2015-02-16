@@ -1208,6 +1208,7 @@ public class SwingSaneWindow implements IComponents, IScanEventHandler {
 
     previewPanel = new PreviewPanel();
     previewPanel.setPreferences(preferences);
+    previewPanel.setPreferredDefaults(preferredDefaults);
     previewPanel.initialize();
     previewPanel.setOpaque(false);
     tabbedPane.addTab(Localizer.localize("PreviewTabTitle"), null, previewPanel, null);

@@ -15,6 +15,7 @@ import javax.swing.event.ChangeListener;
 import com.swingsane.gui.dialog.CropImageDialog;
 import com.swingsane.gui.panel.CropTransformSettingsPanel;
 import com.swingsane.gui.panel.ITransformSettingsPanel;
+import com.swingsane.preferences.IPreferredDefaults;
 
 /**
  * @author Roland Quast (roland@formreturn.com)
@@ -40,7 +41,7 @@ public class CropTransform implements IImageTransform {
   }
 
   @Override
-  public final void configure() throws Exception {
+  public final void configure(IPreferredDefaults preferredDefaultsImpl) throws Exception {
     if (!isReadyToTransform()) {
       CropImageDialog cropImageDialog = new CropImageDialog(parent);
       cropImageDialog.setTransform(this);

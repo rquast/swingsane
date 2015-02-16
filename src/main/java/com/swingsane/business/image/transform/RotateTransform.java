@@ -11,6 +11,7 @@ import org.imgscalr.Scalr.Rotation;
 
 import com.swingsane.gui.panel.ITransformSettingsPanel;
 import com.swingsane.gui.panel.RotateTransformSettingsPanel;
+import com.swingsane.preferences.IPreferredDefaults;
 
 /**
  * @author Roland Quast (roland@formreturn.com)
@@ -18,14 +19,15 @@ import com.swingsane.gui.panel.RotateTransformSettingsPanel;
  */
 public class RotateTransform implements IImageTransform {
 
-  private Rotation rotation = Rotation.CW_90;
+  private Rotation rotation;
   private File sourceImageFile;
   private File outputImageFile;
 
   private static final ImageTransformType imageTransformType = ImageTransformType.ROTATE;
 
   @Override
-  public void configure() {
+  public void configure(IPreferredDefaults preferredDefaultsImpl) {
+    rotation = preferredDefaultsImpl.getDefaultRotation();
   }
 
   @Override

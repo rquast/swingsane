@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import com.swingsane.business.image.ImageBinarize;
 import com.swingsane.gui.panel.BinarizeTransformSettingsPanel;
 import com.swingsane.gui.panel.ITransformSettingsPanel;
+import com.swingsane.preferences.IPreferredDefaults;
 
 /**
  * @author Roland Quast (roland@formreturn.com)
@@ -16,9 +17,7 @@ import com.swingsane.gui.panel.ITransformSettingsPanel;
  */
 public class BinarizeTransform implements IImageTransform {
 
-  private static final int DEFAULT_LUMINANCE_THRESHOLD = 165;
-
-  private int luminanceThreshold = DEFAULT_LUMINANCE_THRESHOLD;
+  private int luminanceThreshold;
 
   private File sourceImageFile;
   private File outputImageFile;
@@ -26,7 +25,8 @@ public class BinarizeTransform implements IImageTransform {
   private static final ImageTransformType imageTransformType = ImageTransformType.BINARIZE;
 
   @Override
-  public void configure() {
+  public void configure(IPreferredDefaults preferredDefaultsImpl) throws Exception {
+    luminanceThreshold = preferredDefaultsImpl.getDefaultLuminanceThreshold();
   }
 
   public final int getLuminanceThreshold() {

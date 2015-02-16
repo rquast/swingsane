@@ -8,6 +8,7 @@ import javax.print.attribute.standard.Media;
 import javax.print.attribute.standard.MediaSizeName;
 
 import org.apache.log4j.Logger;
+import org.imgscalr.Scalr.Rotation;
 
 import com.swingsane.business.options.KnownSaneOptions;
 import com.swingsane.preferences.model.Scanner;
@@ -28,6 +29,21 @@ public class PreferredDefaultsImpl implements IPreferredDefaults {
   @Override
   public final ColorMode getColor() {
     return color;
+  }
+
+  @Override
+  public double getDefaultDeskewThreshold() {
+    return IPreferredDefaults.DEFAULT_DESKEW_THRESHOLD;
+  }
+
+  @Override
+  public int getDefaultLuminanceThreshold() {
+    return IPreferredDefaults.DEFAULT_LUMINANCE_THRESHOLD;
+  }
+
+  @Override
+  public Rotation getDefaultRotation() {
+    return IPreferredDefaults.DEFAULT_ROTATION;
   }
 
   @Override
