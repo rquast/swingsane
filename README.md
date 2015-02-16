@@ -1,5 +1,7 @@
-# SwingSane
+# SwingSane 
 SwingSane - A cross-platform, Scanner Access Now Easy (SANE) frontend.
+
+[![Build Status](https://travis-ci.org/rquast/swingsane.svg?branch=master)](https://travis-ci.org/rquast/swingsane)
 
 ## Download
 
