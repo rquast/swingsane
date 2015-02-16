@@ -1,0 +1,12 @@
+language: java
+
+script: mvn clean package
+jdk:
+  - openjdk7
+  - openjdk8
+  - oraclejdk7
+  - oraclejdk8
+
+notifications:
+  email:
+    - roland@formreturn.com
