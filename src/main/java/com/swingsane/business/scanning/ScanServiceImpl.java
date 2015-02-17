@@ -47,7 +47,7 @@ public class ScanServiceImpl implements IScanService {
   public final void configure(SaneDevice saneDevice, Scanner scanner) throws IOException {
     ArrayList<OptionsOrderValuePair> optionOrdering = scanner.getOptionOrdering();
     for (OptionsOrderValuePair vp : optionOrdering) {
-      if ( !(vp.isActive()) ) {
+      if (!(vp.isActive())) {
         continue;
       }
       switch (vp.getSaneOptionType()) {
@@ -187,7 +187,7 @@ public class ScanServiceImpl implements IScanService {
   }
 
   private Option optionInfo(SaneOption saneOption, int recursionLevel) throws IOException,
-      SaneException {
+  SaneException {
 
     recursionLevel++;
 
@@ -342,6 +342,9 @@ public class ScanServiceImpl implements IScanService {
     }
     try {
       SaneOption saneOption = saneDevice.getOption(booleanOption.getName());
+      if (!(saneOption.isActive())) {
+        return;
+      }
       saneOption.setBooleanValue(booleanOption.getValue());
       LOG.debug(booleanOption.getName() + " - " + (booleanOption.getValue() ? "true" : "false"));
     } catch (Exception e) {
@@ -355,12 +358,15 @@ public class ScanServiceImpl implements IScanService {
       return;
     }
     try {
-      SaneOption deviceOption = saneDevice.getOption(fixedOption.getName());
+      SaneOption saneOption = saneDevice.getOption(fixedOption.getName());
+      if (!(saneOption.isActive())) {
+        return;
+      }
       if (fixedOption.getValueList() != null) {
-        deviceOption.setFixedValue(fixedOption.getValueList());
+        saneOption.setFixedValue(fixedOption.getValueList());
         LOG.debug(fixedOption.getName() + " - " + fixedOption.getValueList());
       } else {
-        deviceOption.setFixedValue(fixedOption.getValue());
+        saneOption.setFixedValue(fixedOption.getValue());
         LOG.debug(fixedOption.getName() + " - " + fixedOption.getValue());
       }
     } catch (Exception e) {
@@ -374,12 +380,15 @@ public class ScanServiceImpl implements IScanService {
       return;
     }
     try {
-      SaneOption deviceOption = saneDevice.getOption(integerOption.getName());
+      SaneOption saneOption = saneDevice.getOption(integerOption.getName());
+      if (!(saneOption.isActive())) {
+        return;
+      }
       if (integerOption.getValueList() != null) {
-        deviceOption.setIntegerValue(integerOption.getValueList());
+        saneOption.setIntegerValue(integerOption.getValueList());
         LOG.debug(integerOption.getName() + " - " + integerOption.getValueList());
       } else {
-        deviceOption.setIntegerValue(integerOption.getValue());
+        saneOption.setIntegerValue(integerOption.getValue());
         LOG.debug(integerOption.getName() + " - " + integerOption.getValue());
       }
     } catch (Exception e) {
@@ -394,6 +403,9 @@ public class ScanServiceImpl implements IScanService {
     }
     try {
       SaneOption saneOption = saneDevice.getOption(stringOption.getName());
+      if (!(saneOption.isActive())) {
+        return;
+      }
       saneOption.setStringValue(stringOption.getValue());
       LOG.debug(stringOption.getName() + " - " + stringOption.getValue());
     } catch (Exception e) {
@@ -413,7 +425,7 @@ public class ScanServiceImpl implements IScanService {
 
   @Override
   public final void setScannerOptions(SaneDevice saneDevice, Scanner scanner) throws IOException,
-      SaneException {
+  SaneException {
     scanner.getOptionOrdering().clear();
     List<SaneOption> deviceOptions = saneDevice.listOptions();
     for (SaneOption option : deviceOptions) {
