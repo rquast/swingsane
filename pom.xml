@@ -191,7 +191,7 @@
 		<dependency>
 			<groupId>com.googlecode.jfreesane</groupId>
 			<artifactId>jfreesane</artifactId>
-			<version>0.94</version>
+			<version>0.95</version>
 		</dependency>
 		<dependency>
 			<groupId>com.famfamfam</groupId>
