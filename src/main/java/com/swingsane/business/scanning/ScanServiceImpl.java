@@ -47,6 +47,9 @@ public class ScanServiceImpl implements IScanService {
   public final void configure(SaneDevice saneDevice, Scanner scanner) throws IOException {
     ArrayList<OptionsOrderValuePair> optionOrdering = scanner.getOptionOrdering();
     for (OptionsOrderValuePair vp : optionOrdering) {
+      if ( !(vp.isActive()) ) {
+        continue;
+      }
       switch (vp.getSaneOptionType()) {
       case STRING:
         StringOption stringOption = scanner.getStringOptions().get(vp.getKey());
