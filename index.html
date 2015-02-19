@@ -70,16 +70,18 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="pt-sans-narrow-font">Share scanners on Linux and Mac OS X<br></h2>
-                    <p class="fauna-one-font">TODO: How to configure a SANE backend on Linux.</p>
-                    <p class="fauna-one-font">TODO: How to configure a SANE backend on Mac OS X.</p>
+                    <h2 class="pt-sans-narrow-font">Share scanners on Ubuntu and Mac OS X<br></h2>
+                    <p class="fauna-one-font"><a href="https://help.ubuntu.com/community/sane">Installing SANE on Ubuntu</a>.</p>
+                    <p class="fauna-one-font"><a href="http://www.ellert.se/twain-sane/">Install a SANE backend on Mac OS X</a>.</p>
                     <h2 class="pt-sans-narrow-font">Connect to your shared scanners with SwingSane</h2>
-                    <p class="fauna-one-font">TODO: Connect to a SANE backend on the same computer or over a network.</p>
+                    <p class="fauna-one-font">Connect to a SANE backend on the same computer or over a network.</p>
+                    <p class="fauna-one-font">First, edit the saned.conf of your SANE backend. Make sure you allow access for SwingSane to connect on your local network. Also fix any firewall access issues for sane if required (e.g. ufw allow saned). Click "detect" to search for shared scanners (note: must be running SANE as a daemon. Do not use inet.d). Click "add" to add a scanner by IP address manually.</p>
                 </div>
             </div>
-            <hr/>
+            <hr>
             <header>
                 <h2 class="pt-sans-narrow-font">Download</h2>
+                <p class="fauna-one-font">SwingSane is free and licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>.</p>
             </header>
             <div class="row">
                 <div class="col-md-4">
@@ -112,21 +114,19 @@
                     <pre>java -jar swingsane-0.2.jar</pre>
                 </div>
             </div>
-            <hr/>
+            <hr>
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="pt-sans-narrow-font">Use it with your own Java application</h2>
                     <p class="fauna-one-font">SwingSane was originally created to provide Linux scanner support for <a href="https://www.formreturn.com">FormReturn OMR Software</a>.</p>
-                    <span><img src="http://swingsane.com/assets/images/swingsane_formreturn.png"/></span>
+                    <span></span>
                     <p class="fauna-one-font">Now you can use it in your own software, for free! (Apache 2.0 licensed).</p>
-                  {% include index.md %}
                 </div>
             </div>
             <!-- Example row of columns -->
             <hr>
             <footer>
-                <p class="fauna-one-font">Privacy</p>
-            </footer>
+</footer>
         </div>
         <!-- /container -->
         <!-- Bootstrap core JavaScript
@@ -136,26 +136,5 @@
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-        <!-- Start of StatCounter Code for Default Guide -->
-        <script type="text/javascript">
-//<![CDATA[
-var sc_project=10294349; 
-var sc_invisible=1; 
-var sc_security="13228780"; 
-var scJsHost = (("https:" == document.location.protocol) ?
-"https://secure." : "http://www.");
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter_xhtml.js'></"+"script>");
-//]]>
-</script>
-        <noscript>
-            <div class="statcounter">
-                <a title="hits counter" href="http://statcounter.com/free-hit-counter/" class="statcounter">
-                    <img class="statcounter" src="http://c.statcounter.com/10294349/0/13228780/1/" alt="hits counter"/>
-                </a>
-            </div>
-        </noscript>
-        <!-- End of StatCounter Code for Default Guide -->
     </body>
 </html>
