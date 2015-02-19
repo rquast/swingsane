@@ -11,19 +11,19 @@
 
         <!-- SEO -->
         <meta name="robots" content="noodp,noydir hi" />
-        <meta name="description" content="SwingSane is a powerful, cross platform, open source Java front-end and API for using Scanner Access Now Easy (SANE) back-ends." />
+        <meta name="description" content="SwingSane is a powerful, cross platform, open source Java front-end and API for SANE back-ends." />
         <link rel="canonical" href="http://swingsane.com"/>
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="English" />
-        <meta name="twitter:description" content="SwingSane is a powerful, cross platform, open source Java front-end and API for using Scanner Access Now Easy (SANE) back-ends." />
+        <meta name="twitter:description" content="SwingSane is a powerful, cross platform, open source Java front-end and API for using SANE back-ends." />
         <meta name="twitter:site" content="@SwingSane" />
 
         <!-- Open Graph (FaceBook) -->
         <meta property="og:site_name" content="SwingSane" />
         <meta property="og:title" content="English" />
-        <meta property="og:description" content="SwingSane is a powerful, cross platform, open source Java front-end and API for using Scanner Access Now Easy (SANE) back-ends." />
+        <meta property="og:description" content="SwingSane is a powerful, cross platform, open source Java front-end and API for using SANE back-ends." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="http://swingsane.com" />
         <meta property="og:image" content="/favicon/favicon-96x96.png" />
@@ -52,6 +52,8 @@
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="jumbotron.css" rel="stylesheet">
+        <!-- jQuery Share -->
+        <link rel="stylesheet" href="jquery_share/jquery.share.css" type="text/css" />
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -61,8 +63,15 @@
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand glyph chewy-font" href="#"><span class="icon-sane icon-padding"></span>SwingSane</a>
+                <div class="row">
+                    <div class="col-md-4 col-12-sm">
+                        <div class="navbar-header">
+                            <a class="navbar-brand glyph chewy-font" href="#"><span class="icon-sane icon-padding"></span>SwingSane</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 hidden-xs" style="text-align: right;">
+                        <div id="social-media"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -165,6 +174,14 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="jquery_share/jquery.share.js" type="text/javascript" language="JavaScript"></script>
+        <script type="text/javascript" language="JavaScript">
+            $(document).ready(function () {
+                $('#social-media').share({
+                    networks: ['facebook','pinterest','googleplus','twitter','linkedin','tumblr','in1','email','stumbleupon','digg']
+                });
+            });
+        </script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
     </body>
