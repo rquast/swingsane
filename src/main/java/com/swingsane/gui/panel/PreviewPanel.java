@@ -589,9 +589,11 @@ MouseWheelListener {
     exportTypeComboBox = new JComboBox<String>();
     exportTypeComboBox.setFont(UIManager.getFont("ComboBox.font"));
     exportTypeComboBox.setModel(new DefaultComboBoxModel<String>(new String[] {
-        Localizer.localize("PNGSinglePageText"), Localizer.localize("PDFSinglePageText"),
+        Localizer.localize("JPGSinglePageText"),
+        Localizer.localize("PNGSinglePageText"),
+        Localizer.localize("PDFSinglePageText"),
         Localizer.localize("PDFMultiPageText") }));
-    exportTypeComboBox.setSelectedIndex(2);
+    exportTypeComboBox.setSelectedIndex(0);
     GridBagConstraints gbc_exportTypeComboBox = new GridBagConstraints();
     gbc_exportTypeComboBox.fill = GridBagConstraints.HORIZONTAL;
     gbc_exportTypeComboBox.insets = new Insets(0, 0, 0, 5);
@@ -933,10 +935,10 @@ MouseWheelListener {
           ximage = new PDPixelMap(document, bufferedImage);
           PDPageContentStream contentStream = new PDPageContentStream(document, page, true, true);
           contentStream.drawXObject(ximage, 0, 0, bufferedImage.getWidth(),
-              bufferedImage.getHeight());
+                  bufferedImage.getHeight());
           contentStream.close();
           notification.message(String.format(Localizer.localize("SavingFileMessage"),
-              destinationFile.getCanonicalPath()));
+                  destinationFile.getCanonicalPath()));
           document.save(destinationFile);
         }
         return null;
@@ -1032,21 +1034,67 @@ MouseWheelListener {
   }
 
   private void savePNGFile(final ArrayList<TempFileListItem> selectedItems, final File outputFile,
-      final String batchPrefix) {
+                           final String batchPrefix) {
 
     final INotification notification = new DialogNotificationImpl(getRootPane()
-        .getTopLevelAncestor());
+            .getTopLevelAncestor());
 
     SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
       @Override
       protected Void doInBackground() throws Exception {
         for (TempFileListItem tempFileListItem : selectedItems) {
           notification.message(String.format(Localizer.localize("CopyingFileMessage"),
-              tempFileListItem.tempFile.getName()));
+                  tempFileListItem.tempFile.getName()));
           final File destinationFile = parseOutputFileName(outputFile.getCanonicalFile()
-              + File.separator + batchPrefix + ".png", tempFileListItem.pageNumber + "",
-              tempFileListItem.pagesToScan);
+                          + File.separator + batchPrefix + ".png", tempFileListItem.pageNumber + "",
+                  tempFileListItem.pagesToScan);
           Files.copy(tempFileListItem.tempFile, destinationFile);
+        }
+        return null;
+      }
+
+      @Override
+      protected void done() {
+        try {
+          get();
+          showSaveSuccessMessage();
+          ((JDialog) notification).setVisible(false);
+        } catch (Exception ex) {
+          LOG.error(ex, ex);
+          showSaveErrorMessage(ex);
+        } finally {
+          ((JDialog) notification).dispose();
+        }
+      }
+    };
+    worker.execute();
+
+    ((JDialog) notification).setModal(true);
+    ((JDialog) notification).setVisible(true);
+
+  }
+
+  private void saveJPGFile(final ArrayList<TempFileListItem> selectedItems, final File outputFile,
+                           final String batchPrefix) {
+
+    final INotification notification = new DialogNotificationImpl(getRootPane()
+            .getTopLevelAncestor());
+
+    SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+      @Override
+      protected Void doInBackground() throws Exception {
+        for (TempFileListItem tempFileListItem : selectedItems) {
+          notification.message(String.format(Localizer.localize("CopyingFileMessage"),
+                  tempFileListItem.tempFile.getName()));
+          final File destinationFile = parseOutputFileName(outputFile.getCanonicalFile()
+                          + File.separator + batchPrefix + ".jpg", tempFileListItem.pageNumber + "",
+                  tempFileListItem.pagesToScan);
+
+          //convert to JPG
+          BufferedImage img = ImageIO.read(tempFileListItem.tempFile);
+          BufferedImage jpg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+          jpg.createGraphics().drawImage(img, 0, 0, Color.WHITE, null);
+          ImageIO.write(jpg, "jpg", destinationFile);
         }
         return null;
       }
@@ -1095,21 +1143,28 @@ MouseWheelListener {
     }
 
     switch (selectedIndex) {
-    case 0:
+      case 0:
+        outputFile = getSaveDirectory();
+        if (outputFile == null) {
+          return;
+        }
+        saveJPGFile(selectedItems, outputFile, firstItem.batchPrefix);
+        break;
+    case 1:
       outputFile = getSaveDirectory();
       if (outputFile == null) {
         return;
       }
       savePNGFile(selectedItems, outputFile, firstItem.batchPrefix);
       break;
-    case 1:
+    case 2:
       outputFile = getSaveDirectory();
       if (outputFile == null) {
         return;
       }
       saveIndividualPDFFile(selectedItems, outputFile, firstItem.batchPrefix);
       break;
-    case 2:
+    case 3:
     default:
       outputFile = getSaveFile(firstItem.batchPrefix, "pdf");
       if (outputFile == null) {
